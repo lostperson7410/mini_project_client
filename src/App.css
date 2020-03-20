@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+.Logo {
+  background-image: url(./component/images/Cather1.jpg);
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -36,3 +38,36 @@
     transform: rotate(360deg);
   }
 }
+
+h1{
+  color: black;
+}
+p{padding-top: 30px;
+  align-items: flex-start;
+  background-color: brown;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+.setlogo{
+  padding-top: 10px;
+  background-color: chartreuse;
+  width: 100px;
+  height: 100px;
+}
+.colorerow{
+  background-color: aqua;
+}
+.ColortCol{
+background-color: coral;
+}
+.ColortCol1{
+  background-color:slateblue;
+  }
+.ColortCol2{
+    background-color:red;
+    }
+
+
+    
