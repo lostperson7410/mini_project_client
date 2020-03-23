@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect , useState} from 'react';
+import{useSelector,useDispatch} from 'react-redux'
 import './App.css';
-import logo from './component/images/Cather1.jpg'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'reactstrap';
 import HeaderSection from './component/HeaderSection';
 import { bindActionCreators } from 'redux';
-
-
-useEffect(()=>{
-  console.log(number)
-},[])
-
+import{NumberAction} from './redux/Number/action';
 
 function App() {
 
 
-  
+  useEffect(()=>{
+    console.log(number)
+  },[])
+  const actions = bindActionCreators(NumberAction,useDispatch());
+  const number = useSelector(state => state.number)
 
   return ( //ใส่หน้าบ้าน
     <div>
@@ -27,7 +26,13 @@ function App() {
 
       <Container>
         <Row className = "ColortCol2">
-
+          <div>
+              <h2>Count:{number}</h2>
+            <h2>
+              <button onClick={() => actions.INCREMENT(number)}>INCREMENT</button>
+              <button onClick={() => actions.DECREMENT(number)}>DECREMENT</button>
+            </h2>
+          </div>
         </Row>
       </Container>
     </div>
