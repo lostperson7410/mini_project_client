@@ -10,11 +10,15 @@ import{NumberAction} from './redux/Number/action';
 function App() {
 
 
+
+  const actions = bindActionCreators(NumberAction,useDispatch());
+
+  const number = useSelector(state => state.number)
+
+
   useEffect(()=>{
     console.log(number)
   },[])
-  const actions = bindActionCreators(NumberAction,useDispatch());
-  const number = useSelector(state => state.number)
 
   return ( //ใส่หน้าบ้าน
     <div>

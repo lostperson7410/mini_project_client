@@ -1,4 +1,4 @@
 export const NumberAction = {
-    INCREMENT: (number) => ({type:'INCREMENT', payLoad:number}),
-    DECREMENT: (number) => ({type:'DECREMENT',payLoad:number})
+    INCREMENT: (number) => ({type:'INCREMENT', payload:number}),
+    DECREMENT: (number) => ({type:'DECREMENT',payload:number})
 }
