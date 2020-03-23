@@ -6,6 +6,7 @@ import { Container, Row, Col } from 'reactstrap';
 import HeaderSection from './component/HeaderSection';
 import { bindActionCreators } from 'redux';
 import{NumberAction} from './redux/Number/action';
+import LoginForm from './Components/LoginForm'
 
 function App() {
 
@@ -22,7 +23,10 @@ function App() {
 
   return ( //ใส่หน้าบ้าน
     <div>
-      <Container fluid> 
+
+        <LoginForm/>
+
+      {/* <Container fluid> 
         <Row className = "ColortCol">
         <HeaderSection title ='Wellcome to Cather'/>
         </Row>
@@ -38,7 +42,7 @@ function App() {
             </h2>
           </div>
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 }
