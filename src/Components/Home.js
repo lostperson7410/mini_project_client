@@ -5,6 +5,12 @@ import { Container, Row, Col } from 'reactstrap';
 import HeaderSection from './home/component/HeaderSection';
 import { bindActionCreators } from 'redux';
 import{NumberAction} from './redux/Number/action';
+import Card from './home/component/Card/Card'
+/*
+<p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+<img id="photo" className="pic" src={firebase.auth().currentUser.photoURL}/>
+<button onClick={() => firebase.auth().signOut()}>Sign-out</button>*/
+
 
 function Home() {
 
@@ -20,12 +26,23 @@ function Home() {
 
   return ( //ใส่หน้าบ้าน
     <div>
-      <Container fluid> 
-        <Row className = "ColortCol">
         <HeaderSection title ='Wellcome to Cather'/>
-        </Row>
+        <br></br>
+      <Container>
+      <Row>
+        <Card/>
+        <Card/>
+        <Card/>
+        <Card/>
+      </Row>
       </Container>
+    </div>
+  );
+}
 
+export default Home;
+
+/*
       <Container>
         <Row className = "ColortCol2">
           <div>
@@ -37,8 +54,4 @@ function Home() {
           </div>
         </Row>
       </Container> 
-    </div>
-  );
-}
-
-export default Home;
+*/

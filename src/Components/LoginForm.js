@@ -61,24 +61,15 @@ const firebaseConfig = {
         if (!this.state.isSignedIn){
         return (
             <div  className="bg">
-              <h1>FirebaseUI-React</h1>
-              <h1> with Firebase Authentication</h1>
+              <h1>Welcome To Cather Restaurant</h1>
+              <h1> Please Sign In </h1>
               <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
             </div>
           );
         }
         return (
-            <div className="bg">
-              <h1>FirebaseUI-React</h1>
-              <h1> with Firebase Authentication</h1>
-              <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
-                <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL}/>
-              <button onClick={() => firebase.auth().signOut()}>Sign-out</button>
-              <div>
-                <Home/>
-              </div>
-            </div>
-          );
+              <Home/>
+              );
     }
   }
 
