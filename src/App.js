@@ -6,6 +6,11 @@ import { Container, Row, Col } from 'reactstrap';
 import { bindActionCreators } from 'redux';
 import{NumberAction} from './Components/redux/Number/action';
 import LoginForm from './Components/LoginForm'
+import config from './config'
+
+//firebase
+import firebase from 'firebase/app';
+import "firebase/firestore";
 
 function App() {
 

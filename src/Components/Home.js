@@ -5,7 +5,10 @@ import { Container, Row, Col } from 'reactstrap';
 import HeaderSection from './home/component/HeaderSection';
 import { bindActionCreators } from 'redux';
 import{NumberAction} from './redux/Number/action';
-import Card from './home/component/Card/Card'
+import Carousel from './home/component/Card/Carousel'
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
+import CreateCard from './home/component/Card/CreateCard'
+import ShowCard from './home/component/Card/ShowCard'
 /*
 <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
 <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL}/>
@@ -25,18 +28,24 @@ function Home() {
   },[])
 
   return ( //ใส่หน้าบ้าน
-    <div>
-        <HeaderSection title ='Wellcome to Cather'/>
-        <br></br>
+    <div className = 'aqua-gradient'>
+      <div>
+      <HeaderSection title ='Wellcome to Cather'/>
+      </div>
+      <div>
+        <br>
+        </br>
+      <nav class="navbar navbar-expand">
+      <Carousel/>
+        </nav>
+      </div>
       <Container>
-      <Row>
-        <Card/>
-        <Card/>
-        <Card/>
-        <Card/>
-      </Row>
+        <ShowCard/>
       </Container>
+
+
     </div>
+
   );
 }
 
