@@ -4,6 +4,10 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+//router
+import { BrowserRouter } from 'react-router-dom'
+
+
 //redux
 import {Provider} from 'react-redux';
 import {store} from './Components/redux/store'
@@ -30,16 +34,16 @@ export{
 }
 
 
+const AppWithRouter = () => (
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
+    </BrowserRouter>
+  )
 
 
-
-
-
-ReactDOM.render(
-<Provider store={store}>
-<App />
-</Provider>
-, document.getElementById('root'));
+ReactDOM.render(<AppWithRouter/>, document.getElementById('root'));
 
 
 // If you want your app to work offline and load faster, you can change

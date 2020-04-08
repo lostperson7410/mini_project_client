@@ -8,8 +8,12 @@ import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 //Home
 import Home from './Home';
 
+
+
+
 //Css
 import './Login.css'
+import { Router } from 'react-router-dom';
 // Initialize Firebase
 
   // Instantiate a Firebase app.

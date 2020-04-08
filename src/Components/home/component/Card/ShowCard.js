@@ -4,6 +4,13 @@ import {firestore} from '../../../../index'
 import Cards from './Cards'
 
 
+//redux
+import{NumberAction} from '../../../redux/Number/action';
+import{useSelector,useDispatch} from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
+
 
 function App(){
   
@@ -12,6 +19,8 @@ function App(){
     { id: 1,name:"do homewaork"},
   ])
   
+  const[name,setName] = useState('')
+
 
   useEffect(() =>{
     retriverData()
@@ -28,25 +37,49 @@ function App(){
       setCardPost(myCardPost)
     })
   } 
-  const renderCardPost = () =>{
-    if( CardPost&&CardPost.length)
-    return(
-      CardPost.map((CardPost,index)=>{
-        return(
-        <Cards key={index} CardPost={CardPost} />
-         )
-       }
-      )
+
+
+  const actions = bindActionCreators(NumberAction,useDispatch());
+  const number = useSelector(state => state.number)
+
+
+  const addCardPost  = () => {
+    let id =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
+    firestore.collection("CardPost").doc(id+'').set({id,name});
+    actions.INCREMENT(number) 
+  }
+
+  const editCardPost = (id) => {
+    firestore.collection("CardPost").doc(id + '').set({id,name})
+}
+
+const deleteCardPost = (id) =>{
+  firestore.collection("CardPost").doc(id + '').delete()
+  actions.DECREMENT(number)
+}
+
+
+ const renderCardPost = () =>{
+  if( CardPost&&CardPost.length)
+  return(
+    CardPost.map((CardPost,index)=>{
+      return(
+      <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost} number ={number}/>
+       )
+     }
     )
-    else
+  )
+  else{
+
+    actions.OVERFLOW(number)
+
     return(<li>No CardPost</li>)
   }
+}
 
   return(
     <div>
-      <h1>
         <ul style={{display:'flex',listStyle:'none'}}>{renderCardPost()}</ul>
-      </h1>
     </div>
   );
 }

@@ -4,6 +4,13 @@ import {firestore} from '../../../../index'
 import Cards from './Cards'
 
 
+//redux
+import{NumberAction} from '../../../redux/Number/action';
+import{useSelector,useDispatch} from 'react-redux';
+import { bindActionCreators } from 'redux';
+
+
+
 
 function App(){
   
@@ -32,40 +39,45 @@ function App(){
     })
   } 
 
+
+  const actions = bindActionCreators(NumberAction,useDispatch());
+  const number = useSelector(state => state.number)
+
+
   const addCardPost  = () => {
     let id =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
-    firestore.collection("CardPost").doc(id+'').set({id,name})
+    firestore.collection("CardPost").doc(id+'').set({id,name});
+    actions.INCREMENT(number) 
   }
 
-
-  const renderCardPost = () =>{
-    if( CardPost&&CardPost.length)
-    return(
-      CardPost.map((CardPost,index)=>{
-        return(
-        <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost}/>
-         )
-       }
-      )
-    )
-    else
-    return(<li>No CardPost</li>)
-  }
   const editCardPost = (id) => {
     firestore.collection("CardPost").doc(id + '').set({id,name})
 }
 
 const deleteCardPost = (id) =>{
   firestore.collection("CardPost").doc(id + '').delete()
+  actions.DECREMENT(number)
+}
+
+
+ const renderCardPost = () =>{
+  if( CardPost&&CardPost.length)
+  return(
+    CardPost.map((CardPost,index)=>{
+      return(
+      <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost} number ={number}/>
+       )
+     }
+    )
+  )
+  else
+  return(<li>No CardPost</li>)
 }
 
   return(
     <div>
-      <h1>Todo<br></br>
-      <input type="text" name="name" onChange={(e)=> setName(e.target.value)}/> 
-      <button onClick={addCardPost}>Add</button>
-        <ul style={{display:'flex',listStyle:'none'}}>{renderCardPost()}</ul>
-      </h1>
+       <input type="text" name="name" onChange={(e)=> setName(e.target.value)}/> 
+ <      button onClick={addCardPost}>Add</button>
     </div>
   );
 }
