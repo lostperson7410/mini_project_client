@@ -2,12 +2,14 @@ import React, { Component, useState, useEffect } from 'react';
 import firebase from 'firebase';
 import {firestore} from '../../../../index'
 import Cards from './Cards'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 //redux
 import{NumberAction} from '../../../redux/Number/action';
 import{useSelector,useDispatch} from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Container, Row, Col,} from 'reactstrap';
 
 
 
@@ -16,11 +18,16 @@ function App(){
   
 
   const[CardPost,setCardPost]= useState([
-    { id: 1,name:"do homewaork"},
+    { number:1,id: 1,name:"do homework",text:"Hello"},
   ])
   
   const[name,setName] = useState('')
 
+  const[text,settext] = useState('')
+
+  
+  const actions = bindActionCreators(NumberAction,useDispatch());
+  const number = useSelector(state => state.number)
 
 
   useEffect(() =>{
@@ -30,28 +37,27 @@ function App(){
   const retriverData = () => {
     firestore.collection("CardPost").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myCardPost =snapshot.docs.map(d => {
-        const {id,name} = d.data()
-        console.log(id,name)
-        return{id,name}
+      let myCardPost =snapshot.docs.map( d => {
+        const {id,name,text,number} = d.data()
+        console.log(id,name,text,number)
+        return{id,name,text,number}
       })
       setCardPost(myCardPost)
     })
   } 
 
 
-  const actions = bindActionCreators(NumberAction,useDispatch());
-  const number = useSelector(state => state.number)
 
 
   const addCardPost  = () => {
     let id =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
-    firestore.collection("CardPost").doc(id+'').set({id,name});
+    let number =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
+    firestore.collection("CardPost").doc(id+'').set({id,name,text,number});
     actions.INCREMENT(number) 
   }
 
   const editCardPost = (id) => {
-    firestore.collection("CardPost").doc(id + '').set({id,name})
+    firestore.collection("CardPost").doc(id + '').set({id,name,text,number})
 }
 
 const deleteCardPost = (id) =>{
@@ -65,7 +71,7 @@ const deleteCardPost = (id) =>{
   return(
     CardPost.map((CardPost,index)=>{
       return(
-      <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost} number ={number}/>
+      <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost} />
        )
      }
     )
@@ -76,8 +82,23 @@ const deleteCardPost = (id) =>{
 
   return(
     <div>
+      <Container>
+        <Col>
+        setName
+        <br></br>
        <input type="text" name="name" onChange={(e)=> setName(e.target.value)}/> 
- <      button onClick={addCardPost}>Add</button>
+       <br></br>
+       SetText
+       <br></br>
+       <input type="text" text="text" onChange={(e)=> settext(e.target.value)}/> 
+       <br></br>
+       <button onClick={addCardPost}>Add</button>
+
+        </Col>
+
+      </Container>
+    
+     
     </div>
   );
 }

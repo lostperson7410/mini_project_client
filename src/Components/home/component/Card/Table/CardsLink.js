@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { MDBCloseIcon,MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logo from '../../images/Cather1.jpg'
 
 //route
 
@@ -16,8 +17,7 @@ function CardLink() {
     <div>
     <MDBCol style={{ maxWidth: "22rem" }}>
       <MDBCard>
-        <MDBCardImage className="img-fluid" src="https://mdbootstrap.com/img/Mockups/Lightbox/Thumbnail/img%20(67).jpg"
-          waves />
+      <MDBCardImage className="img-fluid" src={logo}  />
         <MDBCardBody>
           <MDBCardTitle>Table1</MDBCardTitle>
           <Link to="/MenuPage" class="btn btn-success">MenuPage</Link>

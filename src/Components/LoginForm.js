@@ -21,6 +21,7 @@ import { Router } from 'react-router-dom';
 
   //fireStore
 
+
   
   class LoginForm extends Component {
   
@@ -56,18 +57,18 @@ import { Router } from 'react-router-dom';
     render() {
         if (!this.state.isSignedIn){
         return (
-            <div  className="bg">
-              <h1>Welcome To Cather Restaurant</h1>
-              <h1> Please Sign In </h1>
-              <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
-            </div>
-          );
+          <div  className="bg">
+          <h1>Welcome To Cather Restaurant</h1>
+          <h1> Please Sign In </h1>
+          <StyledFirebaseAuth uiConfig={this.uiConfig} firebaseAuth={firebase.auth()}/>
+        </div>
+       
+        );
         }
         return (
-              <Home/>
-              );
+          <Home/>
+      );
     }
   }
 
   export default LoginForm;
-

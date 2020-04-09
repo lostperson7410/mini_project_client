@@ -14,12 +14,17 @@ import { bindActionCreators } from 'redux';
 
 function App(){
   
-
   const[CardPost,setCardPost]= useState([
-    { id: 1,name:"do homewaork"},
+    { number:1,id: 1,name:"do homework",text:"Hello"},
   ])
   
   const[name,setName] = useState('')
+
+  const[text,settext] = useState('')
+
+  
+  const actions = bindActionCreators(NumberAction,useDispatch());
+  const number = useSelector(state => state.number)
 
 
   useEffect(() =>{
@@ -29,28 +34,27 @@ function App(){
   const retriverData = () => {
     firestore.collection("CardPost").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myCardPost =snapshot.docs.map(d => {
-        const {id,name} = d.data()
-        console.log(id,name)
-        return{id,name}
+      let myCardPost =snapshot.docs.map( d => {
+        const {id,name,text,number} = d.data()
+        console.log(id,name,text,number)
+        return{id,name,text,number}
       })
       setCardPost(myCardPost)
     })
   } 
 
 
-  const actions = bindActionCreators(NumberAction,useDispatch());
-  const number = useSelector(state => state.number)
 
 
   const addCardPost  = () => {
     let id =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
-    firestore.collection("CardPost").doc(id+'').set({id,name});
+    let number =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
+    firestore.collection("CardPost").doc(id+'').set({id,name,text,number});
     actions.INCREMENT(number) 
   }
 
   const editCardPost = (id) => {
-    firestore.collection("CardPost").doc(id + '').set({id,name})
+    firestore.collection("CardPost").doc(id + '').set({id,name,text,number})
 }
 
 const deleteCardPost = (id) =>{
@@ -64,7 +68,7 @@ const deleteCardPost = (id) =>{
   return(
     CardPost.map((CardPost,index)=>{
       return(
-      <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost} number ={number}/>
+      <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost} />
        )
      }
     )
