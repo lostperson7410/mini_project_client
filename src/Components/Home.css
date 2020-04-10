@@ -1,0 +1,17 @@
+.bg{
+    background-color: white;
+}
+p{  
+    border-radius: 10%;
+    margin: auto;
+    padding-bottom: 20px;
+    text-align: center;
+    flex-direction: column;
+    font-family: sans-serif;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+    width: 200px;
+    height: 100px;
+}

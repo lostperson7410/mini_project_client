@@ -17,7 +17,7 @@ function Table1() {
     <div>
     <MDBCol style={{ maxWidth: "22rem" }}>
       <MDBCard>
-      <MDBCardImage className="img-fluid" src={logo}  />
+      <MDBCardImage  src={logo}  />
         <MDBCardBody>
           <MDBCardTitle>Table1</MDBCardTitle>
           <Link to="/MenuPage" class="btn btn-success">MenuPage</Link>

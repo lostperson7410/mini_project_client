@@ -84,11 +84,11 @@ const deleteCardPost = (id) =>{
     <div>
       <Container>
         <Col>
-        setName
+        อาหารตามสั่ง
         <br></br>
        <input type="text" name="name" onChange={(e)=> setName(e.target.value)}/> 
        <br></br>
-       SetText
+       รายละเอียด
        <br></br>
        <input type="text" text="text" onChange={(e)=> settext(e.target.value)}/> 
        <br></br>
