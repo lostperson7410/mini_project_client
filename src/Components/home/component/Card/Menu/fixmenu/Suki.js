@@ -5,6 +5,7 @@ import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Suki from '../images/Suki.jpg'
+import './Img.css'
 
 
 //redux
@@ -98,6 +99,7 @@ return (
             </MDBCardBody>
         </MDBCard>
         </MDBCol>
+
             <div>
         
             </div>

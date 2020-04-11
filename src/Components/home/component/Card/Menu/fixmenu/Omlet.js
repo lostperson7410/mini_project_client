@@ -5,6 +5,7 @@ import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Omlet from '../images/Omlet.jpg'
+import './Img.css'
 
 
 //redux
@@ -21,6 +22,7 @@ import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, 
 import{Route,Switch, Link } from 'react-router-dom'
 
 
+
 function App(){
   
 
@@ -28,8 +30,7 @@ function App(){
     { number:1,id: 1,name:"do homework",text:"Hello"},
   ])
   
-  const[name,setName] = useState('')
-
+  const name = "Omlet"
   const[text,settext] = useState('')
 
   
@@ -56,29 +57,29 @@ function App(){
 
 
 
-  const addMenu1  = () => {
+  const addOmlet  = () => {
     let id =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
     let number =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
     firestore.collection("Menu1").doc(id+'').set({id,name,text,number});
     actions.INCREMENT(number) 
   }
 
-  const editMenu1 = (id) => {
+  const editOmlet = (id) => {
     firestore.collection("Menu1").doc(id + '').set({id,name,text,number})
 }
 
-const deleteMenu1 = (id) =>{
+const deleteOmlet = (id) =>{
   firestore.collection("Menu1").doc(id + '').delete()
   actions.DECREMENT(number)
 }
 
 
- const renderMenu1= () =>{
+ const renderOmlet= () =>{
   if( Menu1&&Menu1.length)
   return(
     Menu1.map((Menu1,index)=>{
       return(
-      <Cards key={index} Menu1={Menu1} deleteMenu1={deleteMenu1} editCardPost={editMenu1} />
+      <Cards key={index} Menu1={Menu1} deleteMenu1={deleteOmlet} editCardPost={editOmlet} />
        )
      }
     )
@@ -91,10 +92,10 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src={Omlet}  />
+        <MDBCardImage className="fixOmlet" src={Omlet}  />
             <MDBCardBody>
             <MDBCardTitle>ไข่เจียว: 50 Baht</MDBCardTitle>
-            <Link to="/MenuPage" class="btn btn-success">MenuPage</Link>
+            <Link to="/TotalMenu1" class="btn btn-success" onClick={addOmlet}>MenuPage</Link>
             </MDBCardBody>
         </MDBCard>
         </MDBCol>

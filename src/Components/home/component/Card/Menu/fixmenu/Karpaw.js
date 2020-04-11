@@ -5,6 +5,7 @@ import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Karpaw from '../images/Karpaw.jpg'
+import './Img.css'
 
 
 //redux
@@ -19,6 +20,7 @@ import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, 
 //route
 
 import{Route,Switch, Link } from 'react-router-dom'
+
 
 
 function App(){
@@ -91,7 +93,7 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src={Karpaw}  />
+        <MDBCardImage className="fixKarpaw" src={Karpaw}  />
             <MDBCardBody>
             <MDBCardTitle>กระเพรา: 50 Baht</MDBCardTitle>
             <Link to="/MenuPage" class="btn btn-success">MenuPage</Link>

@@ -8,6 +8,8 @@ import Omlet from './Omlet'
 import Karpaw from './Karpaw'
 import Suki from './Suki'
 
+import './Img.css'
+
 
 import { Container, Row, Col,} from 'reactstrap';
 
@@ -17,6 +19,7 @@ import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, 
 //route
 
 import{Route,Switch, Link } from 'react-router-dom'
+
 
 
 function App(){
