@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from 'react';
 import firebase from 'firebase';
 import {firestore} from '../../../../../../index'
-import Cards from '../../Cards'
+import MenuCards from '../Menucard'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Omlet from '../images/Omlet.jpg'
@@ -46,9 +46,9 @@ function App(){
     firestore.collection("Menu1").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
       let myMenu1 =snapshot.docs.map( d => {
-        const {id,name,text,number} = d.data()
-        console.log(id,name,text,number)
-        return{id,name,text,number}
+        const {name,text,number} = d.data()
+        console.log(name,text,number)
+        return{name,text,number}
       })
       setMenu1(myMenu1)
     })
@@ -58,9 +58,9 @@ function App(){
 
 
   const addOmlet  = () => {
-    let id =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
-    let number =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
-    firestore.collection("Menu1").doc(id+'').set({id,name,text,number});
+    // let id =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
+    // let number =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
+    firestore.collection("Menu1").doc("omlet").set({name,text,number});
     actions.INCREMENT(number) 
   }
 
@@ -79,7 +79,7 @@ const deleteOmlet = (id) =>{
   return(
     Menu1.map((Menu1,index)=>{
       return(
-      <Cards key={index} Menu1={Menu1} deleteMenu1={deleteOmlet} editCardPost={editOmlet} />
+      <MenuCards key={index} Menu1={Menu1} deleteMenu1={deleteOmlet} editCardPost={editOmlet} />
        )
      }
     )
@@ -95,13 +95,11 @@ return (
         <MDBCardImage className="fixOmlet" src={Omlet}  />
             <MDBCardBody>
             <MDBCardTitle>ไข่เจียว: 50 Baht</MDBCardTitle>
-            <Link to="/TotalMenu1" class="btn btn-success" onClick={addOmlet}>MenuPage</Link>
+            <Link class="btn btn-success" onClick={addOmlet}>Add to menu</Link>
             </MDBCardBody>
         </MDBCard>
         </MDBCol>
-            <div>
-        
-            </div>
+       
         </div>
 
     );
