@@ -4,12 +4,6 @@ import {firestore} from '../../../../index'
 import Cards from './Cards'
 
 
-//redux
-import{NumberAction} from '../../../redux/Number/action';
-import{useSelector,useDispatch} from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-
 
 
 function App(){
@@ -21,10 +15,6 @@ function App(){
   const[name,setName] = useState('')
 
   const[text,settext] = useState('')
-
-  
-  const actions = bindActionCreators(NumberAction,useDispatch());
-  const number = useSelector(state => state.number)
 
 
   useEffect(() =>{
@@ -50,16 +40,14 @@ function App(){
     let id =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
     let number =(CardPost.length === 0)?1:CardPost[CardPost.length-1].id + 1
     firestore.collection("CardPost").doc(id+'').set({id,name,text,number});
-    actions.INCREMENT(number) 
   }
 
   const editCardPost = (id) => {
-    firestore.collection("CardPost").doc(id + '').set({id,name,text,number})
+    firestore.collection("CardPost").doc(id + '').set({id,name,text})
 }
 
 const deleteCardPost = (id) =>{
   firestore.collection("CardPost").doc(id + '').delete()
-  actions.DECREMENT(number)
 }
 
 
@@ -75,7 +63,6 @@ const deleteCardPost = (id) =>{
   )
   else{
 
-    actions.OVERFLOW(number)
 
     return(<li>No CardPost</li>)
   }

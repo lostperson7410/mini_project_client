@@ -2,6 +2,8 @@ import React from "react";
 import { MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBView, MDBContainer } from
 "mdbreact";
 
+
+
 const Carousel = () => {
   return (
     <MDBContainer>

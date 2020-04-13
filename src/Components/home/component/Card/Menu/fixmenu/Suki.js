@@ -8,10 +8,6 @@ import Suki from '../images/Suki.jpg'
 import './Img.css'
 
 
-//redux
-import{NumberAction} from '../../../../../redux/Number/action';
-import{useSelector,useDispatch} from 'react-redux';
-import { bindActionCreators } from 'redux';
 import { Container, Row, Col,} from 'reactstrap';
 
 import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage,MDBCloseIcon,MDBBtn, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
@@ -20,73 +16,51 @@ import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, 
 //route
 
 import{Route,Switch, Link } from 'react-router-dom'
+import Menu from '../Menu';
 
 
 function App(){
   
 
-  const[Menu1,setMenu1]= useState([
-    { number:1,id: 1,name:"do homework",text:"Hello"},
+  const[Menu3,setMenu3]= useState([
+    { numberS:1,id: 1,name:"do homework",text:"Hello"},
   ])
   
   const[name,setName] = useState('')
 
   const[text,settext] = useState('')
 
-  
-  const actions = bindActionCreators(NumberAction,useDispatch());
-  const number = useSelector(state => state.number)
-
 
   useEffect(() =>{
-    retriverData()
+    SukiData()
   },[])
 
-  const retriverData = () => {
-    firestore.collection("Menu1").onSnapshot((snapshot)=>{
+  const SukiData = () => {
+    firestore.collection("Menu3").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myMenu1 =snapshot.docs.map( d => {
-        const {id,name,text,number} = d.data()
-        console.log(id,name,text,number)
-        return{id,name,text,number}
+      let myMenu3 =snapshot.docs.map( d => {
+        const {name,text,numberS} = d.data()
+        console.log(name,text,numberS)
+        return{name,text,numberS}
       })
-      setMenu1(myMenu1)
+      setMenu3(myMenu3)
     })
   } 
 
 
+  const addSuki  = () => {
+    let numberS = numberS +1
+    firestore.collection("Menu3").doc("Suki").set({name,text,numberS});
 
-
-  const addMenu1  = () => {
-    let id =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
-    let number =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
-    firestore.collection("Menu1").doc(id+'').set({id,name,text,number});
-    actions.INCREMENT(number) 
   }
 
-  const editMenu1 = (id) => {
-    firestore.collection("Menu1").doc(id + '').set({id,name,text,number})
-}
+const deleteSuki = () =>{
+  firestore.collection("Menu3").doc("Suki").delete()
 
-const deleteMenu1 = (id) =>{
-  firestore.collection("Menu1").doc(id + '').delete()
-  actions.DECREMENT(number)
 }
 
 
- const renderMenu1= () =>{
-  if( Menu1&&Menu1.length)
-  return(
-    Menu1.map((Menu1,index)=>{
-      return(
-      <Cards key={index} Menu1={Menu1} deleteMenu1={deleteMenu1} editCardPost={editMenu1} />
-       )
-     }
-    )
-  )
-  else
-  return(<li>No CardPost</li>)
-}
+
 
 return (
         <div>
@@ -95,8 +69,13 @@ return (
         <MDBCardImage className="img-fluid" src={Suki}  />
             <MDBCardBody>
             <MDBCardTitle>สุกกี้: 50 Baht</MDBCardTitle>
-            <Link to="/MenuPage" class="btn btn-success">MenuPage</Link>
-            </MDBCardBody>
+            <Row>
+              {Menu3[0].numberS}
+              <Col>
+              <Link class="btn btn-success btn-sm" onClick={addSuki}>Add menu</Link>
+              </Col>
+            </Row>           
+          </MDBCardBody>
         </MDBCard>
         </MDBCol>
 

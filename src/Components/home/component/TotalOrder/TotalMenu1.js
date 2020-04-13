@@ -4,10 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col,} from 'reactstrap';
 import HeaderSection from '../HeaderSection';
 
-//redux
-import { bindActionCreators } from 'redux';
-import{NumberAction} from '../../../redux/Number/action';
-
 
 import Carousel from '../Card/Carousel'
 
@@ -26,6 +22,9 @@ import MenuCards from '../Card/Menu/Menucard'
 import {firestore} from '../../../../index'
 
 import Omlet from '../Card/Menu/images/Omlet.jpg'
+import Karpaw from '../Card/Menu/images/Karpaw.jpg'
+import Suki from '../Card/Menu/images/Suki.jpg'
+
 
 import{Route,Switch, Link } from 'react-router-dom'
 
@@ -35,59 +34,32 @@ import{Route,Switch, Link } from 'react-router-dom'
 <button onClick={() => firebase.auth().signOut()}>Sign-out</button>*/
 
 
-
 function TotalPage() {
 
-
-
-  const[Menu1,setMenu1]= useState([
-    { number:1,id: 1,name:"do homework",text:"Hello"},
-  ])
   
-  const name = "Omlet"
-  const[text,settext] = useState('')
-  const [number,setnumber] = useState([])
-  
-
-
-  useEffect(() =>{
-    retriverData()
-  },[])
-
-  const retriverData = () => {
-    firestore.collection("Menu1").onSnapshot((snapshot)=>{
-      console.log(snapshot.docs)
-      let myMenu1 =snapshot.docs.map( d => {
-        const {id,name,text,number} = d.data()
-        console.log(id,name,text,number)
-        return{id,name,text,number}
-      })
-      setMenu1(myMenu1)
-    })
-  } 
-
-
-
 
 
 
 return (
-  <div>
+  <div class='body' className = 'aqua-gradient'>
   <br/>
   <div>
-  <h1 class='text-center text-dark bg-white'>Order</h1>
+  <h1 class='text-center'>Order</h1>
   </div>
-          <div>
-        <MDBCol style={{ maxWidth: "22rem" }}>
-        <MDBCard>
-        <MDBCardImage className="fixOmlet" src={Omlet}  />
-            <MDBCardBody>
-            <MDBCardTitle>ไข่เจียว: 50 Baht</MDBCardTitle>
-            <MDBRow>{Menu1[0].number}</MDBRow>
-            </MDBCardBody>
-        </MDBCard>
-        </MDBCol>
+
+          <div className= "RowCard">
+
+       <Row >
+        
+   
+            
        
+      </Row>
+       
+        
+      
+
+
         </div>
   </div>
     );

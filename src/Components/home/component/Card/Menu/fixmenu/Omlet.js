@@ -8,10 +8,8 @@ import Omlet from '../images/Omlet.jpg'
 import './Img.css'
 
 
-//redux
-import{NumberAction} from '../../../../../redux/Number/action';
-import{useSelector,useDispatch} from 'react-redux';
-import { bindActionCreators } from 'redux';
+
+
 import { Container, Row, Col,} from 'reactstrap';
 
 import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage,MDBCloseIcon,MDBBtn, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
@@ -32,10 +30,6 @@ function App(){
   
   const name = "Omlet"
   const[text,settext] = useState('')
-
-  
-  const actions = bindActionCreators(NumberAction,useDispatch());
-  const number = useSelector(state => state.number)
 
 
   useEffect(() =>{
@@ -58,35 +52,18 @@ function App(){
 
 
   const addOmlet  = () => {
-    // let id =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
-    // let number =(Menu1.length === 0)?1:Menu1[Menu1.length-1].id + 1
+    
+     let number = number + 1
     firestore.collection("Menu1").doc("omlet").set({name,text,number});
-    actions.INCREMENT(number) 
   }
 
-  const editOmlet = (id) => {
-    firestore.collection("Menu1").doc(id + '').set({id,name,text,number})
-}
 
-const deleteOmlet = (id) =>{
-  firestore.collection("Menu1").doc(id + '').delete()
-  actions.DECREMENT(number)
+
+const deleteOmlet = () =>{
+  firestore.collection("Menu1").doc('omlet').delete()
 }
 
 
- const renderOmlet= () =>{
-  if( Menu1&&Menu1.length)
-  return(
-    Menu1.map((Menu1,index)=>{
-      return(
-      <MenuCards key={index} Menu1={Menu1} deleteMenu1={deleteOmlet} editCardPost={editOmlet} />
-       )
-     }
-    )
-  )
-  else
-  return(<li>No CardPost</li>)
-}
 
 return (
         <div>
@@ -95,7 +72,12 @@ return (
         <MDBCardImage className="fixOmlet" src={Omlet}  />
             <MDBCardBody>
             <MDBCardTitle>ไข่เจียว: 50 Baht</MDBCardTitle>
-            <Link class="btn btn-success" onClick={addOmlet}>Add to menu</Link>
+            <Row>
+              {Menu1[0].number}
+              <Col>
+              <Link class="btn btn-success btn-sm" onClick={addOmlet}>Add menu</Link>
+              </Col>
+            </Row>
             </MDBCardBody>
         </MDBCard>
         </MDBCol>

@@ -8,9 +8,6 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 
 
-//redux
-import {Provider} from 'react-redux';
-import {store} from './Components/redux/store'
 //firebase
 import firebase from 'firebase/app'
 import 'firebase/firestore'
@@ -36,9 +33,8 @@ export{
 
 const AppWithRouter = () => (
     <BrowserRouter>
-        <Provider store={store}>
+
             <App />
-        </Provider>
     </BrowserRouter>
   )
 

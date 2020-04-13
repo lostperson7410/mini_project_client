@@ -1,10 +1,8 @@
 import React, { useEffect , useState} from 'react';
-import{useSelector,useDispatch} from 'react-redux'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'reactstrap';
-import { bindActionCreators } from 'redux';
-import{NumberAction} from './Components/redux/Number/action';
+
 import config from './config'
 
 

@@ -4,10 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col,} from 'reactstrap';
 import HeaderSection from './home/component/HeaderSection';
 
-//redux
-import { bindActionCreators } from 'redux';
-import{NumberAction} from './redux/Number/action';
-
 
 import Carousel from './home/component/Card/Carousel'
 
@@ -28,13 +24,8 @@ import { render } from 'react-dom';
 function SecondPage() {
 
 
-  const actions = bindActionCreators(NumberAction,useDispatch());
-
-  const number = useSelector(state => state.number)
-
-
   useEffect(()=>{
-    console.log(number)
+    console.log()
   },[])
 
   return ( //ใส่หน้าบ้าน
