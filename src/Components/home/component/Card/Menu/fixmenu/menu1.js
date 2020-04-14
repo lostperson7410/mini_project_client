@@ -6,6 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Omlet from './Omlet'
 import Suki from './Suki'
+import Karpaw from './Karpaw'
 
 import './Img.css'
 
@@ -38,6 +39,7 @@ return (
             <Row>
               <Omlet/>
               <Suki/>
+              <Karpaw/>
             </Row>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">

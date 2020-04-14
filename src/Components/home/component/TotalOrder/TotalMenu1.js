@@ -4,28 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col,} from 'reactstrap';
 import HeaderSection from '../HeaderSection';
 
-
-import Carousel from '../Card/Carousel'
-
-
 import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage,MDBCloseIcon,MDBBtn, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 
-import CreateCard from '../Card/CreateCard'
-import ShowCard from '../Card/ShowCard'
-import CardLink from '../Card/Table/CardsLink'
-
-import { render } from 'react-dom';
-
-import MenuCards from '../Card/Menu/Menucard'
-
-//firebase
-import {firestore} from '../../../../index'
-
-import Omlet from '../Card/Menu/images/Omlet.jpg'
-import Karpaw from '../Card/Menu/images/Karpaw.jpg'
-import Suki from '../Card/Menu/images/Suki.jpg'
-
-
+import CardOmlet from '../Card/Menu/fixmenu/Omlet'
+import CardKarpaw from '../Card/Menu/fixmenu/Karpaw'
+import CardSuki from '../Card/Menu/fixmenu/Suki'
+import Showcard from '../Card/ShowCard'
 import{Route,Switch, Link } from 'react-router-dom'
 
 /*
@@ -41,27 +25,30 @@ function TotalPage() {
 
 
 return (
-  <div class='body' className = 'aqua-gradient'>
+  <body class='container-fluid bg-dark '>
   <br/>
   <div>
-  <h1 class='text-center'>Order</h1>
+  <h1 class='text-center mh-100'>Order</h1>
   </div>
-
           <div className= "RowCard">
 
        <Row >
-        
-   
-            
-       
-      </Row>
-       
-        
-      
 
-
+         <CardOmlet/>
+         <CardKarpaw/>
+         <CardSuki/>
+       
+      </Row>   
         </div>
-  </div>
+  <br/>
+  <br/>
+  <h1>รายการตามสั่งอื่นๆ</h1>
+  <br/>
+  <br/>
+  <Showcard/>
+
+  </body>
+  
     );
 }
 

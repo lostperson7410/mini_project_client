@@ -2,7 +2,7 @@ import React, { useEffect , useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ShowCard from '../ShowCard'
 import CreateCard from '../CreateCard'
-import Omlet from './fixmenu/menu1'
+import MenuCarousol from './fixmenu/menu1'
 import { Container,Row,Col} from 'reactstrap';
 import{Route,Switch, Link } from 'react-router-dom'
 
@@ -13,11 +13,12 @@ function Menu(){
         <br/>
           <div class='Container'>
             <Row>
-              <Omlet/>
+              <MenuCarousol/>
             </Row>
           </div>
         <br/>
         <br/>
+        <CreateCard/>
         <br/>
         <br/>
         <br/>
@@ -26,6 +27,7 @@ function Menu(){
         </div>
         <br/>
         <br/>
+        <ShowCard/>
         <br/>
         <br/>
 

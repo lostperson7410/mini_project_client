@@ -4,8 +4,8 @@ import {firestore} from '../../../../index'
 import Cards from './Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardImage,MDBCloseIcon,MDBBtn, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 
-//redux
 import { Container, Row, Col,} from 'reactstrap';
 
 
@@ -56,37 +56,34 @@ const deleteCardPost = (id) =>{
   firestore.collection("CardPost").doc(id + '').delete()
 }
 
-
- const renderCardPost = () =>{
-  if( CardPost&&CardPost.length)
   return(
-    CardPost.map((CardPost,index)=>{
-      return(
-      <Cards key={index} CardPost={CardPost} deleteCardPost={deleteCardPost} editCardPost={editCardPost} />
-       )
-     }
-    )
-  )
-  else
-  return(<li>No CardPost</li>)
-}
-
-  return(
-    <div>
+      <div>
       <Container>
-        <Col>
-        อาหารตามสั่ง
-        <br></br>
-       <input type="text" name="name" onChange={(e)=> setName(e.target.value)}/> 
-       <br></br>
-       รายละเอียด
-       <br></br>
-       <input type="text" text="text" onChange={(e)=> settext(e.target.value)}/> 
-       <br></br>
-       <button onClick={addCardPost}>Add</button>
+      <Col>
+      <MDBCard>
+      
+        <MDBCardBody>
+          
+          <MDBCardTitle>อาหารตามสั่ง</MDBCardTitle>
+          
+          <div  class="md-form">
+            ชื่อเมนู
+           </div>
+           <input type="text" name="name" id="form1" class="form-control" onChange={(e)=> setName(e.target.value)}/> 
 
-        </Col>
+            <br></br>
+          <div  class="md-form">
+          รายละเอียด
+            </div>
+          <br></br>
+          <input type="text" text="text" id="form1" class="form-control" onChange={(e)=> settext(e.target.value)}/> 
+          <br></br>
 
+
+          <MDBBtn  onClick={addCardPost}>Add</MDBBtn>
+        </MDBCardBody>
+      </MDBCard>
+      </Col>
       </Container>
     
      

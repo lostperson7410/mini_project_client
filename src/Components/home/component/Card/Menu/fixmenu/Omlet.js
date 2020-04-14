@@ -27,10 +27,17 @@ function App(){
   const[Menu1,setMenu1]= useState([
     { number:1,id: 1,name:"do homework",text:"Hello"},
   ])
-  
+
+  //new work
+
+
+
+
+
+
   const name = "Omlet"
   const[text,settext] = useState('')
-
+  const[count,setcount] = useState(firebase.firestore.FieldValue.increment(1))
 
   useEffect(() =>{
     retriverData()
@@ -40,21 +47,19 @@ function App(){
     firestore.collection("Menu1").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
       let myMenu1 =snapshot.docs.map( d => {
-        const {name,text,number} = d.data()
-        console.log(name,text,number)
-        return{name,text,number}
+        const {name,text,count} = d.data()
+        console.log(name,text,count)
+        return{name,text,count}
       })
       setMenu1(myMenu1)
     })
   } 
 
 
-
-
   const addOmlet  = () => {
     
-     let number = number + 1
-    firestore.collection("Menu1").doc("omlet").set({name,text,number});
+    firestore.collection("Menu1").doc("omlet").set({name,text,count},{ merge: true });
+
   }
 
 
@@ -73,7 +78,7 @@ return (
             <MDBCardBody>
             <MDBCardTitle>ไข่เจียว: 50 Baht</MDBCardTitle>
             <Row>
-              {Menu1[0].number}
+              {Menu1[0].count}
               <Col>
               <Link class="btn btn-success btn-sm" onClick={addOmlet}>Add menu</Link>
               </Col>

@@ -8,9 +8,7 @@ import Cards from './Cards'
 
 function App(){
   
-  const[CardPost,setCardPost]= useState([
-    { number:1,id: 1,name:"do homework",text:"Hello"},
-  ])
+  const[CardPost,setCardPost]= useState([])
   
   const[name,setName] = useState('')
 
