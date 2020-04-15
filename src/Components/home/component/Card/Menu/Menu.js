@@ -11,7 +11,7 @@ function Menu(){
       <div class='body' className = 'aqua-gradient'>
         <br/>
         <br/>
-          <div class='Container'>
+          <div className="CenterCarousel">
             <Row>
               <MenuCarousol/>
             </Row>

@@ -7,6 +7,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Omlet from './Omlet'
 import Suki from './Suki'
 import Karpaw from './Karpaw'
+import FR from './FR'
+import PK from './PK'
+import NP from './NP'
+
 
 import './Img.css'
 
@@ -40,6 +44,12 @@ return (
               <Omlet/>
               <Suki/>
               <Karpaw/>
+            </Row>
+            <br/>
+            <Row>
+              <FR/>
+              <PK/>
+              <NP/>
             </Row>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">
