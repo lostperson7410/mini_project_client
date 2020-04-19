@@ -4,7 +4,7 @@ import {firestore} from '../../../../../../index'
 import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Karpaw from '../images/Karpaw.jpg'
+import TLM from '../images/ต้มเลือดหมู.jpg'
 import './Img.css'
 
 
@@ -16,55 +16,47 @@ import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, 
 //route
 
 import{Route,Switch, Link } from 'react-router-dom'
+import Menu from '../Menu';
 
 
 function App(){
   
 
-  const[Menu2,setMenu2]= useState([2])
+  const[Menu7,setMenu7]= useState([4])
   
   const[name,setName] = useState('')
 
   const[text,settext] = useState('')
 
-  const[countK,setcountK] = useState(firebase.firestore.FieldValue.increment(1))
+  const[countTM,setcountTM] = useState(firebase.firestore.FieldValue.increment(1))
 
 
   useEffect(() =>{
-    KarpawData()
+    TMData()
   },[])
 
-  const KarpawData = () => {
-    firestore.collection("Menu2").onSnapshot((snapshot)=>{
+  const TMData = () => {
+    firestore.collection("Menu7").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myMenu2 =snapshot.docs.map( d => {
-        const {name,text,countK,} = d.data()
-        console.log(name,text,countK)
-        return{name,text,countK}
+      let myMenu7 =snapshot.docs.map( d => {
+        const {name,text,countTM,} = d.data()
+        console.log(name,text,countTM)
+        return{name,text,countTM}
       })
-      setMenu2(myMenu2)
+      setMenu7(myMenu7)
     })
   } 
 
 
-  const addKarpaw  = () => {
-    firestore.collection("Menu2").doc("Karpaw").set({name,text,countK},{ merge: true });
+  const addfirerice  = () => {
+    firestore.collection("Menu7").doc("ต้มเลือดหมู").set({name,text,countTM},{ merge: true });
 
   }
 
-  const documents = firestore.collection('Menu2').get();
-
-  const getK = () =>{
-     let count = 0;
-  for (const doc of documents) {
-    count += doc.get('countK');
-  }
-  return countK;
-}
 
 
-const deleteKarpaw = () =>{
-  firestore.collection("Menu2").doc("Karpaw").delete()
+const deleteSuki = () =>{
+  firestore.collection("Menu7").doc("ต้มเลือดหมู").delete()
 
 }
 
@@ -75,12 +67,12 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="fixKarpaw" src={Karpaw}  />
+        <MDBCardImage className="img-fluid" src={TLM}  />
             <MDBCardBody>
-            <MDBCardTitle>กะเพรา: 50 Baht</MDBCardTitle>
+            <MDBCardTitle>ต้มเลือดหมู: 50 Baht</MDBCardTitle>
             <Row>
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addKarpaw}>Add menu</Link>
+              <Link class="btn btn-success btn-sm" onClick={addfirerice}>Add menu</Link>
               </Col>
             </Row>           
           </MDBCardBody>

@@ -4,7 +4,7 @@ import {firestore} from '../../../../../../index'
 import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Suki from '../images/Suki.jpg'
+import Oleng from '../images/โอเลี่ยง.jpg'
 import './Img.css'
 
 
@@ -22,50 +22,41 @@ import Menu from '../Menu';
 function App(){
   
 
-  const[Menu3,setMenu3]= useState([1])
+  const[Oleng,setOleng]= useState([])
   
   const[name,setName] = useState('')
 
   const[text,settext] = useState('')
 
-  const[countS,setcountS] = useState(firebase.firestore.FieldValue.increment(1))
+  const[countOleng,setcountOleng] = useState(firebase.firestore.FieldValue.increment(1))
 
 
   useEffect(() =>{
-    SukiData()
+    OlengData()
   },[])
 
-  const SukiData = () => {
-    firestore.collection("Menu3").onSnapshot((snapshot)=>{
+  const OlengData = () => {
+    firestore.collection("Oleng").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myMenu3 =snapshot.docs.map( d => {
-        const {name,text,countS,} = d.data()
-        console.log(name,text,countS)
-        return{name,text,countS}
+      let myOleng =snapshot.docs.map( d => {
+        const {name,text,countOleng,} = d.data()
+        console.log(name,text,countOleng)
+        return{name,text,countOleng}
       })
-      setMenu3(myMenu3)
+      setOleng(myOleng)
     })
   } 
 
 
-  const addSuki  = () => {
-    firestore.collection("Menu3").doc("Suki").set({name,text,countS},{ merge: true });
+  const addOleng  = () => {
+    firestore.collection("Oleng").doc("Oleng").set({name,text,countOleng},{ merge: true });
 
   }
 
-  const documents = firestore.collection('Menu3').get();
-
-  const getS = () =>{
-     let count = 0;
-  for (const doc of documents) {
-    count += doc.get('countS');
-  }
-  return count;
-}
 
 
-const deleteSuki = () =>{
-  firestore.collection("Menu3").doc("Suki").delete()
+const deleteOleng = () =>{
+  firestore.collection("Oleng").doc("Oleng").delete()
 
 }
 
@@ -76,13 +67,12 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src={Suki}  />
+        <MDBCardImage className="img-fluid" src= {Oleng}  />
             <MDBCardBody>
-            <MDBCardTitle>สุกกี้: 50 Baht</MDBCardTitle>
+            <MDBCardTitle>โอเลี่ยง: 20 Baht</MDBCardTitle>
             <Row>
-              {Menu3[0].countS}
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addSuki}>Add menu</Link>
+              <Link class="btn btn-success btn-sm" onClick={addOleng}>Add menu</Link>
               </Col>
             </Row>           
           </MDBCardBody>

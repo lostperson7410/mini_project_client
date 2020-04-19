@@ -4,7 +4,7 @@ import {firestore} from '../../../../../../index'
 import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Suki from '../images/Suki.jpg'
+import MTK from '../images/หมูทอดกระเทียม.jpg'
 import './Img.css'
 
 
@@ -22,50 +22,44 @@ import Menu from '../Menu';
 function App(){
   
 
-  const[Menu3,setMenu3]= useState([1])
+  const[Menu9,setMenu9]= useState([1])
   
   const[name,setName] = useState('')
 
   const[text,settext] = useState('')
 
-  const[countS,setcountS] = useState(firebase.firestore.FieldValue.increment(1))
+  const[countMTK,setcountMTK] = useState(firebase.firestore.FieldValue.increment(1))
 
 
   useEffect(() =>{
-    SukiData()
+    MTKData()
   },[])
 
-  const SukiData = () => {
-    firestore.collection("Menu3").onSnapshot((snapshot)=>{
+  const MTKData = () => {
+    firestore.collection("Menu9").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myMenu3 =snapshot.docs.map( d => {
-        const {name,text,countS,} = d.data()
-        console.log(name,text,countS)
-        return{name,text,countS}
+      let myMenu9 =snapshot.docs.map( d => {
+        const {name,text,countMTK,} = d.data()
+        console.log(name,text,countMTK)
+        return{name,text,countMTK}
       })
-      setMenu3(myMenu3)
+      setMenu9(myMenu9)
     })
   } 
 
 
-  const addSuki  = () => {
-    firestore.collection("Menu3").doc("Suki").set({name,text,countS},{ merge: true });
+  const addMTK  = () => {
+    firestore.collection("Menu9").doc("หมูทอดกระเทียม").set({name,text,countMTK},{ merge: true });
 
   }
 
-  const documents = firestore.collection('Menu3').get();
-
-  const getS = () =>{
-     let count = 0;
-  for (const doc of documents) {
-    count += doc.get('countS');
+  const documents = () =>{
+    let c = firestore.collection('Menu9').get('countMTK');
   }
-  return count;
-}
 
 
-const deleteSuki = () =>{
-  firestore.collection("Menu3").doc("Suki").delete()
+const deleteMTK = () =>{
+  firestore.collection("Menu9").doc("หมูทอดกระเทียม").delete()
 
 }
 
@@ -76,13 +70,12 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src={Suki}  />
+        <MDBCardImage className="fixMTK" src={MTK}  />
             <MDBCardBody>
-            <MDBCardTitle>สุกกี้: 50 Baht</MDBCardTitle>
+            <MDBCardTitle>หมูทอดกระเทียม: 50 Baht</MDBCardTitle>
             <Row>
-              {Menu3[0].countS}
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addSuki}>Add menu</Link>
+              <Link class="btn btn-success btn-sm" onClick={addMTK}>Add menu</Link>
               </Col>
             </Row>           
           </MDBCardBody>

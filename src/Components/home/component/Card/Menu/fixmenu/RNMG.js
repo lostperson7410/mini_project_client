@@ -4,7 +4,7 @@ import {firestore} from '../../../../../../index'
 import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import แกงป่าไก่ from '../images/แกงป่าไก่.jpg'
+import RNMG from '../images/ราดหน้าหมูหมักหมี่ก๊อป.jpg'
 import './Img.css'
 
 
@@ -22,13 +22,13 @@ import Menu from '../Menu';
 function App(){
   
 
-  const[Menu4,setMenu4]= useState([1])
+  const[Menu8,setMenu8]= useState([1])
   
   const[name,setName] = useState('')
 
   const[text,settext] = useState('')
 
-  const[countPK,setcountPK] = useState(firebase.firestore.FieldValue.increment(1))
+  const[countRNMG,setcountRNMG] = useState(firebase.firestore.FieldValue.increment(1))
 
 
   useEffect(() =>{
@@ -36,26 +36,27 @@ function App(){
   },[])
 
   const SukiData = () => {
-    firestore.collection("Menu4").onSnapshot((snapshot)=>{
+    firestore.collection("Menu8").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myMenu4 =snapshot.docs.map( d => {
-        const {name,text,countPK,} = d.data()
-        console.log(name,text,countPK)
-        return{name,text,countPK}
+      let myMenu8 =snapshot.docs.map( d => {
+        const {name,text,countRNMG,} = d.data()
+        console.log(name,text,countRNMG)
+        return{name,text,countRNMG}
       })
-      setMenu4(myMenu4)
+      setMenu8(myMenu8)
     })
   } 
 
 
-  const addPK  = () => {
-    firestore.collection("Menu4").doc("แกงป่าไก่").set({name,text,countPK},{ merge: true });
+  const addSuki  = () => {
+    firestore.collection("Menu8").doc("ราดหน้าหมูหมักหมี่ก๊อป").set({name,text,countRNMG},{ merge: true });
 
   }
 
 
+
 const deleteSuki = () =>{
-  firestore.collection("Menu4").doc("แกงป่าไก่").delete()
+  firestore.collection("Menu8").doc("ราดหน้าหมูหมักหมี่ก๊อป").delete()
 
 }
 
@@ -66,12 +67,12 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src={แกงป่าไก่}  />
+        <MDBCardImage className="fixRNMG" src={RNMG}  />
             <MDBCardBody>
-            <MDBCardTitle>แกงป่าไก่: 50 Baht</MDBCardTitle>
+            <MDBCardTitle>ราดหน้าหมูหมักหมี่ก๊อป: 50 Baht</MDBCardTitle>
             <Row>
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addPK}>Add menu</Link>
+              <Link class="btn btn-success btn-sm" onClick={addSuki}>Add menu</Link>
               </Col>
             </Row>           
           </MDBCardBody>

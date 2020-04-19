@@ -4,7 +4,7 @@ import {firestore} from '../../../../../../index'
 import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Suki from '../images/Suki.jpg'
+import Coke from '../images/Coke.jpg'
 import './Img.css'
 
 
@@ -22,50 +22,41 @@ import Menu from '../Menu';
 function App(){
   
 
-  const[Menu3,setMenu3]= useState([1])
+  const[Coke1,setCoke1]= useState([])
   
   const[name,setName] = useState('')
 
   const[text,settext] = useState('')
 
-  const[countS,setcountS] = useState(firebase.firestore.FieldValue.increment(1))
+  const[countCoke,setcountCoke] = useState(firebase.firestore.FieldValue.increment(1))
 
 
   useEffect(() =>{
-    SukiData()
+    CokeData()
   },[])
 
-  const SukiData = () => {
-    firestore.collection("Menu3").onSnapshot((snapshot)=>{
+  const CokeData = () => {
+    firestore.collection("Coke1").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
-      let myMenu3 =snapshot.docs.map( d => {
-        const {name,text,countS,} = d.data()
-        console.log(name,text,countS)
-        return{name,text,countS}
+      let myCoke1 =snapshot.docs.map( d => {
+        const {name,text,countCoke,} = d.data()
+        console.log(name,text,countCoke)
+        return{name,text,countCoke}
       })
-      setMenu3(myMenu3)
+      setCoke1(myCoke1)
     })
   } 
 
 
-  const addSuki  = () => {
-    firestore.collection("Menu3").doc("Suki").set({name,text,countS},{ merge: true });
+  const addCoke  = () => {
+    firestore.collection("Coke1").doc("Coke1").set({name,text,countCoke},{ merge: true });
 
   }
 
-  const documents = firestore.collection('Menu3').get();
-
-  const getS = () =>{
-     let count = 0;
-  for (const doc of documents) {
-    count += doc.get('countS');
-  }
-  return count;
-}
 
 
-const deleteSuki = () =>{
-  firestore.collection("Menu3").doc("Suki").delete()
+const deleteCoke = () =>{
+  firestore.collection("Coke1").doc("Coke1").delete()
 
 }
 
@@ -76,13 +67,12 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src={Suki}  />
+        <MDBCardImage className="img-fluid" src={Coke}  />
             <MDBCardBody>
-            <MDBCardTitle>สุกกี้: 50 Baht</MDBCardTitle>
+            <MDBCardTitle>โค้ก: 15 Baht</MDBCardTitle>
             <Row>
-              {Menu3[0].countS}
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addSuki}>Add menu</Link>
+              <Link class="btn btn-success btn-sm" onClick={addCoke}>Add menu</Link>
               </Col>
             </Row>           
           </MDBCardBody>

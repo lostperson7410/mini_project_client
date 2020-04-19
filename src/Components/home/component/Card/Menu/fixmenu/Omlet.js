@@ -47,7 +47,7 @@ function App(){
     firestore.collection("Menu1").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
       let myMenu1 =snapshot.docs.map( d => {
-        const {name,text,count} = d.data()
+        const {name,text,count = 0 } = d.data()
         console.log(name,text,count)
         return{name,text,count}
       })
@@ -78,7 +78,6 @@ return (
             <MDBCardBody>
             <MDBCardTitle>ไข่เจียว: 50 Baht</MDBCardTitle>
             <Row>
-              {Menu1[0].count}
               <Col>
               <Link class="btn btn-success btn-sm" onClick={addOmlet}>Add menu</Link>
               </Col>

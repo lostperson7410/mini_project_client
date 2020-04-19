@@ -10,7 +10,13 @@ import Karpaw from './Karpaw'
 import FR from './FR'
 import PK from './PK'
 import NP from './NP'
-
+import TM from './TM'
+import RNMG from './RNMG'
+import MTK from './MTK'
+import Coke from './Coke'
+import Chanum from './Chanum'
+import Coffe from './Coffe'
+import Oleng from './Oleng'
 
 import './Img.css'
 
@@ -51,13 +57,24 @@ return (
               <PK/>
               <NP/>
             </Row>
+            <br/>
+            <Row>
+              <TM/>
+              <RNMG/>
+              <MTK/>
+            </Row>
           </MDBCarouselItem>
           <MDBCarouselItem itemId="2">
           <Row>
-              <Omlet/>
-              <Omlet/>
-              <Omlet/>
+              <Coke/>
+              <Chanum/>
+              <Coffe/>
           </Row>
+          <Row>
+            <Oleng/>
+            
+          </Row>
+
           </MDBCarouselItem>
           <MDBCarouselItem itemId="3">
           <Row>
