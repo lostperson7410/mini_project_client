@@ -4,7 +4,7 @@ import {firestore} from '../../../../../../index'
 import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Coffe from '../images/Coffe.jpg'
+import Cof from '../images/Coffe.jpg'
 import './Img.css'
 
 
@@ -67,7 +67,7 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src= {Coffe}  />
+        <MDBCardImage className="img-fluid" src= {Cof}  />
             <MDBCardBody>
             <MDBCardTitle>กาแฟร์: 50 Baht</MDBCardTitle>
             <Row>

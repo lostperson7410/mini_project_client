@@ -4,7 +4,7 @@ import {firestore} from '../../../../../../index'
 import Cards from '../../Cards'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Chanum from '../images/Chanum.jpg'
+import Num from '../images/น้ำเปล่า.jpg'
 import './Img.css'
 
 
@@ -28,7 +28,7 @@ function App(){
 
   const[text,settext] = useState('')
 
-  const[countChanum,setcountChanum] = useState(firebase.firestore.FieldValue.increment(1))
+  const[countNumpaw,setcountNumpaw] = useState(firebase.firestore.FieldValue.increment(1))
 
 
   useEffect(() =>{
@@ -36,7 +36,7 @@ function App(){
   },[])
 
   const ChanumData = () => {
-    firestore.collection("Chanum").onSnapshot((snapshot)=>{
+    firestore.collection("Numpaw").onSnapshot((snapshot)=>{
       console.log(snapshot.docs)
       let myChanum =snapshot.docs.map( d => {
         const {name,text,countChanum,} = d.data()
@@ -48,15 +48,15 @@ function App(){
   } 
 
 
-  const addChanum  = () => {
-    firestore.collection("Chanum").doc("Chanum").set({name,text,countChanum},{ merge: true });
+  const addNumpaw  = () => {
+    firestore.collection("Numpaw").doc("Numpaw").set({name,text,countNumpaw},{ merge: true });
 
   }
 
 
 
-const deleteChanum = () =>{
-  firestore.collection("Chanum").doc("Chanum").delete()
+const deleteNumpaw = () =>{
+  firestore.collection("Numpaw").doc("Numpaw").delete()
 
 }
 
@@ -67,12 +67,12 @@ return (
         <div>
         <MDBCol style={{ maxWidth: "22rem" }}>
         <MDBCard>
-        <MDBCardImage className="img-fluid" src= {Chanum}  />
+        <MDBCardImage className="img-fluid" src= {Num}  />
             <MDBCardBody>
-            <MDBCardTitle>ชานม: 50 Baht</MDBCardTitle>
+            <MDBCardTitle>น้ำเปล่า: 50 Baht</MDBCardTitle>
             <Row>
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addChanum}>Add menu</Link>
+              <Link class="btn btn-success btn-sm" onClick={addNumpaw}>Add menu</Link>
               </Col>
             </Row>           
           </MDBCardBody>

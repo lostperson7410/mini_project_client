@@ -17,6 +17,7 @@ import Coke from './Coke'
 import Chanum from './Chanum'
 import Coffe from './Coffe'
 import Oleng from './Oleng'
+import Numpaw from './Numpaw'
 
 import './Img.css'
 
@@ -39,7 +40,7 @@ return (
       <MDBContainer>
       <MDBCarousel 
         activeItem={1}
-        length={3}
+        length={2}
         showControls={true}
         showIndicators={true}
         className="z-depth-1"
@@ -70,18 +71,13 @@ return (
               <Chanum/>
               <Coffe/>
           </Row>
+          <br/>
           <Row>
             <Oleng/>
+            <Numpaw/>
             
           </Row>
 
-          </MDBCarouselItem>
-          <MDBCarouselItem itemId="3">
-          <Row>
-              <Omlet/>
-              <Omlet/>
-              <Omlet/>
-          </Row>
           </MDBCarouselItem>
       </MDBCarousel>
     </MDBContainer>
