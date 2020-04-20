@@ -16,7 +16,6 @@ import {  MDBView,MDBCarousel, MDBCarouselInner, MDBCarouselItem, MDBContainer, 
 //route
 
 import{Route,Switch, Link } from 'react-router-dom'
-import Menu from '../Menu';
 
 
 function App(){
@@ -53,10 +52,6 @@ function App(){
 
   }
 
-  const documents = () =>{
-    let c = firestore.collection('Menu9').get('countMTK');
-  }
-
 
 const deleteMTK = () =>{
   firestore.collection("Menu9").doc("หมูทอดกระเทียม").delete()
@@ -74,6 +69,7 @@ return (
             <MDBCardBody>
             <MDBCardTitle>หมูทอดกระเทียม: 50 Baht</MDBCardTitle>
             <Row>
+              {Menu9[0].countMTK}
               <Col>
               <Link class="btn btn-success btn-sm" onClick={addMTK}>Add menu</Link>
               </Col>

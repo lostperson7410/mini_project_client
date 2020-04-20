@@ -25,7 +25,6 @@ import CardNP from '../Card/Menu/fixmenu/CardNP'
 import CardCoke from '../Card/Menu/fixmenu/CardCoke'
 import CardOleng from '../Card/Menu/fixmenu/CardOleng'
 import CardChanum from '../Card/Menu/fixmenu/CardChanum'
-import CardCoffe from '../Card/Menu/fixmenu/CardCoffe'
 import CardNumpaw from '../Card/Menu/fixmenu/CardNumpaw'
 import Showcard from '../Card/ShowCard'
 import{Route,Switch, Link } from 'react-router-dom'
@@ -41,15 +40,10 @@ function TotalPage() {
   
   const deleteTable1 = () =>{
 
-    firestore.collection("Chanum").doc("Chanum").delete()
-    firestore.collection("Coffe").doc("Coffe").delete()
-    firestore.collection("Coke1").doc("Coke1").delete()
     firestore.collection("Menu5").doc("ข้าวผัด").delete()
     firestore.collection("Menu2").doc("Karpaw").delete()
     firestore.collection("Menu9").doc("หมูทอดกระเทียม").delete()
     firestore.collection("Menu6").doc("ข้าวหน้าเป็ด").delete()
-    firestore.collection("Numpaw").doc("Numpaw").delete()
-    firestore.collection("Oleng").doc("Oleng").delete()
     firestore.collection("Menu1").doc('omlet').delete()
     firestore.collection("Menu4").doc("แกงป่าไก่").delete()
     firestore.collection("Menu8").doc("ราดหน้าหมูหมักหมี่ก๊อป").delete()
@@ -73,7 +67,19 @@ return (
          <CardKarpaw/>
          <CardSuki/>
        
-      </Row>   
+      </Row>
+            <br/>
+            <Row>
+              <CardFR/>
+              <CardPK/>
+              <CardNP/>
+            </Row>
+            <br/>
+            <Row>
+              <CardTM/>
+              <CardRNMG/>
+              <CardMTK/>
+            </Row>   
         </div>
   <br/>
   <br/>
@@ -81,23 +87,9 @@ return (
   <br/>
   <Showcard/>
   <br/>
-  <h1>เครื่องดื่มต่างๆ</h1>
-  <div className="RowCard">
-          <Row>
-            <CardChanum/>
-            <CardCoffe/>
-            <CardNumpaw/>
-
-          </Row>
-          <br/>
-          <Row>
-          <CardOleng/>
-            <CardCoke/>
-          </Row>
-      </div>
   <br/>
   <Container>
-  <Link class="btn btn-success btn-sm" onClick={deleteTable1}>Finish Order</Link>
+  <Link to="/" class="btn btn-success btn-sm" onClick={deleteTable1}>Finish Order</Link>
   </Container>
 
   </body>

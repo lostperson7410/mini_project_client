@@ -71,6 +71,7 @@ return (
             <MDBCardBody>
             <MDBCardTitle>ข้าวผัด: 50 Baht</MDBCardTitle>
             <Row>
+              {Menu5[0].countF}
               <Col>
               <Link class="btn btn-success btn-sm" onClick={addfirerice}>Add menu</Link>
               </Col>

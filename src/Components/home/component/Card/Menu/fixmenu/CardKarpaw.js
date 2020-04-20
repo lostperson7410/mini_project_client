@@ -54,14 +54,6 @@ function App(){
 
   const documents = firestore.collection('Menu2').get();
 
-  const getK = () =>{
-     let count = 0;
-  for (const doc of documents) {
-    count += doc.get('countK');
-  }
-  return countK;
-}
-
 
 const deleteKarpaw = () =>{
   firestore.collection("Menu2").doc("Karpaw").delete()
@@ -79,6 +71,7 @@ return (
             <MDBCardBody>
             <MDBCardTitle>กะเพรา: 50 Baht</MDBCardTitle>
             <Row>
+              {Menu2[0].countK}
               <Col>
               <Link class="btn btn-success btn-sm" onClick={addKarpaw}>Add menu</Link>
               </Col>

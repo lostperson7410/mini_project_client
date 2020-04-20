@@ -80,6 +80,7 @@ return (
             <MDBCardBody>
             <MDBCardTitle>สุกกี้: 50 Baht</MDBCardTitle>
             <Row>
+              {Menu3[0].countS}
               <Col>
               <Link class="btn btn-success btn-sm" onClick={addSuki}>Add menu</Link>
               </Col>

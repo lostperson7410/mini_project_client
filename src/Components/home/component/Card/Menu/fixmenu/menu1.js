@@ -13,11 +13,6 @@ import NP from './NP'
 import TM from './TM'
 import RNMG from './RNMG'
 import MTK from './MTK'
-import Coke from './Coke'
-import Chanum from './Chanum'
-import Coffe from './Coffe'
-import Oleng from './Oleng'
-import Numpaw from './Numpaw'
 
 import './Img.css'
 
@@ -40,7 +35,7 @@ return (
       <MDBContainer>
       <MDBCarousel 
         activeItem={1}
-        length={2}
+        length={1}
         showControls={true}
         showIndicators={true}
         className="z-depth-1"
@@ -64,20 +59,6 @@ return (
               <RNMG/>
               <MTK/>
             </Row>
-          </MDBCarouselItem>
-          <MDBCarouselItem itemId="2">
-          <Row>
-              <Coke/>
-              <Chanum/>
-              <Coffe/>
-          </Row>
-          <br/>
-          <Row>
-            <Oleng/>
-            <Numpaw/>
-            
-          </Row>
-
           </MDBCarouselItem>
       </MDBCarousel>
     </MDBContainer>
