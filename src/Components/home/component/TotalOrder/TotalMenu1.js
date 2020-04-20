@@ -59,7 +59,7 @@ function TotalPage() {
     firestore.collection("Menu3").doc("Suki").delete()
     firestore.collection("Menu7").doc("ต้มเลือดหมู").delete()
 //enddelte
-
+//reset to ZERO
 firestore.collection("Menu1").doc("omlet").set({count},{ merge: true });
 firestore.collection("Menu4").doc("แกงป่าไก่").set({countPK},{ merge: true });
 firestore.collection("Menu5").doc("ข้าวผัด").set({countF},{ merge: true });
