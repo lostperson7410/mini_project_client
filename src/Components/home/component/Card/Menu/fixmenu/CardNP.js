@@ -71,7 +71,7 @@ return (
             <MDBCardTitle>ข้าวหน้าเป็ด: 50 Baht</MDBCardTitle>
             <Row>
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addNP}>Add menu</Link>
+              {Menu6[0].countNP}
               </Col>
             </Row>           
           </MDBCardBody>

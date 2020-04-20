@@ -48,17 +48,8 @@ function App(){
   } 
 
 
-  const addfirerice  = () => {
-    firestore.collection("Menu7").doc("ต้มเลือดหมู").set({name,text,countTM},{ merge: true });
-
-  }
 
 
-
-const deleteSuki = () =>{
-  firestore.collection("Menu7").doc("ต้มเลือดหมู").delete()
-
-}
 
 
 
@@ -72,7 +63,7 @@ return (
             <MDBCardTitle>ต้มเลือดหมู: 50 Baht</MDBCardTitle>
             <Row>
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addfirerice}>Add menu</Link>
+                {Menu7[0].countTM}
               </Col>
             </Row>           
           </MDBCardBody>

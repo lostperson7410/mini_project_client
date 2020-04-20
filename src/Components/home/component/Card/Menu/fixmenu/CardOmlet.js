@@ -79,11 +79,11 @@ return (
             <MDBCardBody>
             <MDBCardTitle>ไข่เจียว: 50 Baht</MDBCardTitle>
             <Row>
+
+              <Col>
               {
               Menu1[0].count
-              }
-              <Col>
-              <Link class="btn btn-success btn-sm" onClick={addOmlet}>Add menu</Link>
+              }              
               </Col>
             </Row>
             </MDBCardBody>

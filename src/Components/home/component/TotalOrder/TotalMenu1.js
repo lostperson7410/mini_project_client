@@ -22,10 +22,6 @@ import CardTM from '../Card/Menu/fixmenu/CardTM'
 import CardMTK from '../Card/Menu/fixmenu/CardMTK'
 import CardFR from '../Card/Menu/fixmenu/CardFR'
 import CardNP from '../Card/Menu/fixmenu/CardNP'
-import CardCoke from '../Card/Menu/fixmenu/CardCoke'
-import CardOleng from '../Card/Menu/fixmenu/CardOleng'
-import CardChanum from '../Card/Menu/fixmenu/CardChanum'
-import CardNumpaw from '../Card/Menu/fixmenu/CardNumpaw'
 import Showcard from '../Card/ShowCard'
 import{Route,Switch, Link } from 'react-router-dom'
 
@@ -37,7 +33,20 @@ import{Route,Switch, Link } from 'react-router-dom'
 
 function TotalPage() {
 
+  let fixcount = 0;
+
+  const[fix,setfix]= useState()
+  const count = 0 ;
+  const countPK = 0 ;
+  const countF = 0 ;
+  const countNP = 0 ;
+  const countMTK = 0 ;
+  const countTM = 0 ;
+  const countK = 0 ;
+  const countS = 0 ;
+  const countRNMG = 0 ;
   
+
   const deleteTable1 = () =>{
 
     firestore.collection("Menu5").doc("ข้าวผัด").delete()
@@ -49,7 +58,20 @@ function TotalPage() {
     firestore.collection("Menu8").doc("ราดหน้าหมูหมักหมี่ก๊อป").delete()
     firestore.collection("Menu3").doc("Suki").delete()
     firestore.collection("Menu7").doc("ต้มเลือดหมู").delete()
-    firestore.collection("Menu7").doc("ต้มเลือดหมู").delete()
+//enddelte
+
+firestore.collection("Menu1").doc("omlet").set({count},{ merge: true });
+firestore.collection("Menu4").doc("แกงป่าไก่").set({countPK},{ merge: true });
+firestore.collection("Menu5").doc("ข้าวผัด").set({countF},{ merge: true });
+firestore.collection("Menu6").doc("ข้าวหน้าเป็ด").set({countNP},{ merge: true });
+firestore.collection("Menu9").doc("หมูทอดกระเทียม").set({countMTK},{ merge: true });
+firestore.collection("Menu8").doc("ราดหน้าหมูหมักหมี่ก๊อป").set({countRNMG},{ merge: true });
+firestore.collection("Menu3").doc("Suki").set({countS},{ merge: true });
+firestore.collection("Menu2").doc("Karpaw").set({countK},{ merge: true });
+firestore.collection("Menu7").doc("ต้มเลือดหมู").set({countTM},{ merge: true });
+
+
+
   }
 
 

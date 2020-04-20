@@ -72,7 +72,7 @@ return (
             <MDBCardTitle>ราดหน้าหมูหมักหมี่ก๊อป: 50 Baht</MDBCardTitle>
             <Row>
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addSuki}>Add menu</Link>
+                {Menu8[0].countRNMG}             
               </Col>
             </Row>           
           </MDBCardBody>

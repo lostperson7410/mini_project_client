@@ -69,9 +69,8 @@ return (
             <MDBCardBody>
             <MDBCardTitle>หมูทอดกระเทียม: 50 Baht</MDBCardTitle>
             <Row>
-              {Menu9[0].countMTK}
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addMTK}>Add menu</Link>
+              {Menu9[0].countMTK}
               </Col>
             </Row>           
           </MDBCardBody>

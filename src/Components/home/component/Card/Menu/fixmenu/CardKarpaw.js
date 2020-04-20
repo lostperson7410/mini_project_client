@@ -71,9 +71,8 @@ return (
             <MDBCardBody>
             <MDBCardTitle>กะเพรา: 50 Baht</MDBCardTitle>
             <Row>
-              {Menu2[0].countK}
               <Col>
-              <Link class="btn btn-success btn-sm" onClick={addKarpaw}>Add menu</Link>
+              {Menu2[0].countK}
               </Col>
             </Row>           
           </MDBCardBody>

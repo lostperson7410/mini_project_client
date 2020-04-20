@@ -37,7 +37,7 @@ function App(){
 
   const name = "Omlet"
   const[text,settext] = useState('')
-  const[count,setcount] = useState(firebase.firestore.FieldValue.increment(1))
+  const[count = 0 ,setcount] = useState(firebase.firestore.FieldValue.increment(1))
 
   useEffect(() =>{
     retriverData()
