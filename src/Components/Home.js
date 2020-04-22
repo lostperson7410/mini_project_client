@@ -29,10 +29,8 @@ import {
 <button onClick={() => firebase.auth().signOut()}>Sign-out</button>*/
 
 import TotalMenu1 from './home/component/TotalOrder/TotalMenu1'
-import SecondPage from './SecondPage'
 import MenuPage from './home/component/Card/Menu/Menu'
 import Table1 from './home/component/Card/Table/Table1';
-import SlideCard from './home/component/Card/SlideCard'
 
 //css
 import './Home.css'
@@ -44,7 +42,6 @@ function Home() {
       <HeaderSection title ='Wellcome to Cather'/>
         <Switch>
             <Route exact path="/" component={Homes} />
-            <Route path="/SecondPage" component={SecondPage}/>
             <Route path="/MenuPage" component={MenuPage}/>
             <Route path="/TotalMenu1" component={TotalMenu1}/>
 

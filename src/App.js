@@ -22,7 +22,6 @@ import {
 } from "react-router-dom";
 
 
-import SecondPage from './Components/SecondPage'
 import MenuPage from './Components/home/component/Card/Menu/Menu'
 import Homes from './Components/Home'
 import LoginPage from './Components/LoginForm'
