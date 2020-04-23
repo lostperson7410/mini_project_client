@@ -31,6 +31,7 @@ import {
 import TotalMenu1 from './home/component/TotalOrder/TotalMenu1'
 import MenuPage from './home/component/Card/Menu/Menu'
 import Table1 from './home/component/Card/Table/Table1';
+import TotalOrder from './home/component/TotalOrder/TotalMenu1';
 
 //css
 import './Home.css'

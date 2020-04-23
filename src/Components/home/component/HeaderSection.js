@@ -32,6 +32,7 @@ const HeaderSection = props => {
                 
                 <Col>
                 <Link to="/" className="navbar-item">Home</Link>
+                <Link to="/TotalMenu1" className="navbar-item">Staff Only</Link>
                 </Col>
                 <div>
                 <img id="photo" className="pic"class='bg-white' src={firebase.auth().currentUser.photoURL}/>
