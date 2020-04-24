@@ -59,11 +59,6 @@ const deleteCardPost = (id) =>{
      }
     )
   )
-  else{
-
-
-    return(<li>No CardPost</li>)
-  }
 }
 
   return(

@@ -25,6 +25,8 @@ import CardNP from '../Card/Menu/fixmenu/CardNP'
 import Showcard from '../Card/ShowCard'
 import{Route,Switch, Link } from 'react-router-dom'
 
+import './TotalMenu.css'
+
 /*
 <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
 <img id="photo" className="pic" src={firebase.auth().currentUser.photoURL}/>
@@ -33,6 +35,7 @@ import{Route,Switch, Link } from 'react-router-dom'
 
 function TotalPage() {
 
+  
   let fixcount = 0;
 
   const[fix,setfix]= useState()
@@ -47,7 +50,7 @@ function TotalPage() {
   const countRNMG = 0 ;
   
 
-  const deleteTable1 = () =>{
+  const deleteTable1 = (id) =>{
 
     firestore.collection("Menu5").doc("ข้าวผัด").delete()
     firestore.collection("Menu2").doc("Karpaw").delete()
@@ -58,6 +61,9 @@ function TotalPage() {
     firestore.collection("Menu8").doc("ราดหน้าหมูหมักหมี่ก๊อป").delete()
     firestore.collection("Menu3").doc("Suki").delete()
     firestore.collection("Menu7").doc("ต้มเลือดหมู").delete()
+    firestore.collection("CardPost").doc(id + '').delete()
+
+
 //enddelte
 //reset to ZERO
 firestore.collection("Menu1").doc("omlet").set({count},{ merge: true });
@@ -73,6 +79,8 @@ firestore.collection("Menu7").doc("ต้มเลือดหมู").set({coun
 
 
   }
+
+  
 
 
 return (
@@ -111,8 +119,14 @@ return (
   <br/>
   <br/>
   <Container>
-  <Link to="/" class="btn btn-success btn-sm" onClick={deleteTable1}>Finish Order</Link>
+    <Row>
+         <Col xs="5"></Col>
+         <Col xs="auto"><Link to="/" className='fixCenter ' onClick={deleteTable1}>Finish Order</Link></Col>
+         <Col xs="3"></Col>
+    </Row>
   </Container>
+  <br/>
+  <br/>
 
   </body>
   
